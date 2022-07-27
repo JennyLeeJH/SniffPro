@@ -55,14 +55,18 @@
 
 <script>
 	
-	//logout Click Event 시작
-	$("#logoutBtn").click(
-		function(){
-			session.invalidate();
+	var btn_click = function(str){
+		
+		if(str == "cart"){
+			print("장바구니");
+		}
+		else if(str == "logout"){
+			outNcart.action="logout.do";
+		}
+		else{
 			
-			response.sendRedirect("../../index.jsp");
-		}		
-	);
+		}
+	}
 	
 
 	
@@ -79,20 +83,20 @@ String name=(String)request.getAttribute("name");
 
 
 <body>
-
+<form name="outNcart" method="post">
 	<div class="box1">
 		<span class="box2">
 			<%=name %>님
 		</span>
 		<span class="box2">반갑습니다.</span>
 		<span class="box3">
-			<input type="button" id="cartBtn" class="submitBtn" value="CART" />
+			<input type="submit" id="cartBtn" class="submitBtn" value="CART" onclick='btn_click("cart")' />
 		</span>
 		<span class="box3">
-			<input type="button" id="logoutBtn" class="submitBtn" value="LOGOUT" />
+			<input type="submit" id="logoutBtn" class="submitBtn" value="LOGOUT" onclick='btn_click("logout")' />
 		</span>
 	</div>
-
+</form>
 </body>
 </html>
 
